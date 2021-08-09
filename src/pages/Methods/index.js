@@ -8,7 +8,7 @@ import { metaDoc } from './metadocs.type'
 import PageManager from './components/PageManager'
 import PageEdit from './components/PageEditNew'
 import { API_HOST } from 'config'
-import { addInput, setDefaultArrayProps } from "components/dms/wrappers/utils/get-dms-input"
+import { addInput, setDefaultArrayProps } from "modules/dms/wrappers/utils/get-dms-input"
 import AssetTable from './components/Element/AssetsTable'
 import TypeSelect from "./components/ShmpTypeSelect"
 import DmsInput from "./components/ShmpDmsInput"

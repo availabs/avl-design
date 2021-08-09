@@ -2,7 +2,7 @@ import React from "react"
 import get from 'lodash.get'
 
 import {/*TopNav, withAuth,*/ useTheme} from '@availabs/avl-components'
-import {SideNav} from 'components/avl-components/src'
+import {SideNav} from 'modules/avl-components/src'
 import { Link } from 'react-router-dom'
 
 import AuthMenu from 'pages/Auth/AuthMenu'
@@ -10,7 +10,7 @@ import SectionSideNav from './SideNav'
 
 import Layout from 'pages/Layout'
 
-import {DmsButton} from "components/dms/components/dms-button"
+import {DmsButton} from 'modules/dms/components/dms-button'
 
 
 const Create = ({createState, setValues, item, dataItems, ...props}) => {

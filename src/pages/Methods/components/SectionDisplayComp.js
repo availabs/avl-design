@@ -2,7 +2,7 @@ import React from "react"
 
 import get from "lodash.get"
 
-import { getInputData } from "components/dms/wrappers/utils/get-dms-input"
+import { getInputData } from "modules/dms/wrappers/utils/get-dms-input"
 
 const DisplayComp = props => {
   const { /*title, section,*/ element } = get(props, "value", {}),

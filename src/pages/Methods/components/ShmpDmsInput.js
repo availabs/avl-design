@@ -6,7 +6,7 @@ import React from "react"
 
 // import { useSetSections } from "../wrappers/dms-create"
 
-import dmsInputWrapper from "components/dms/wrappers/dms-input"
+import dmsInputWrapper from "modules/dms/wrappers/dms-input"
 
 const DmsInput = dmsInputWrapper(({ Sections, hasFocus, id, autoFocus = false, onFocus, onBlur, value, ref, ...props }) => {
 

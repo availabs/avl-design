@@ -1,6 +1,6 @@
 import React from "react"
 
-import { getInputData } from "components/dms/wrappers/utils/get-dms-input"
+import { getInputData } from "modules/dms/wrappers/utils/get-dms-input"
 
 const SectionView = ({ title, section, element, isRaw = true }) => {
   const { /* key, name, */ type, value } = element;

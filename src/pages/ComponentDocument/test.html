@@ -1,0 +1,64 @@
+<div class="relative bg-gray-500 rounded-lg ring-1 ring-gray-900 ring-opacity-5 overflow-hidden">
+    <div :class="{ 'block': activeTab === 'preview', 'hidden': activeTab !== 'preview' }" class="block">
+      <div x-data="resizableIFrame()" x-init="init()" x-ref="root" :style="'max-width: 100%; width: ' + width" class="min-w-full sm:min-w-[392px] relative sm:pr-4" style="max-width: 100%; width: 100%">
+        <div id="frame-2c3b25e7b9e4490edd7b6950692c0a11" class="bg-white" style="height: auto;">
+          <iframe x-ref="iframe" name="frame-2c3b25e7b9e4490edd7b6950692c0a11" class="w-full" srcdoc="<!doctype html><meta charset=&quot;utf-8&quot;><meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, shrink-to-fit=no&quot;><link rel=&quot;stylesheet&quot; href=&quot;/css/components-v2.css?id=245a1fece6f471b4bb3e&quot;><script src=&quot;/js/components-v2.js?id=3ddad09133b8cf3f78f0&quot;></script><script src=&quot;/js/iframe.js?id=165e0af3d723efd6d5d8&quot; defer></script><script src=&quot;/js/alpine.js?id=aec657470ad97cbba5c2&quot; defer></script><body class=&quot;antialiased font-sans bg-gray-200 overflow-hidden&quot;><div class=&quot;&quot; style=&quot;&quot;>
+  
+  <div class=&quot;bg-white&quot;>
+    <div class=&quot;max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8&quot;>
+      <div class=&quot;text-center&quot;>
+        <h2 class=&quot;text-base font-semibold text-indigo-600 tracking-wide uppercase&quot;>Pricing</h2>
+        <p class=&quot;mt-1 text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl&quot;>Take control of your team.</p>
+        <p class=&quot;max-w-xl mt-5 mx-auto text-xl text-gray-500&quot;>Start building for free, then add a site plan to go live. Account plans unlock additional features.</p>
+      </div>
+    </div>
+  </div>
+
+</div></body>" style="opacity: 1; height: 356px;">
+  
+</iframe>
+          <div :class="{ 'pointer-events-none': !resizing }" class="absolute opacity-0 inset-0 pointer-events-none"></div>
+          <div x-ref="handle" @pointerdown="onResizeStart($event)" class="sr-only sm:not-sr-only sm:border-l sm:bg-gray-100 sm:absolute sm:right-0 sm:inset-y-0 sm:flex sm:items-center sm:w-4 cursor-[ew-resize]" style="touch-action: none">
+            <div class="absolute inset-y-0 -inset-x-2"></div>
+            <svg class="h-4 w-4 text-gray-600 pointer-events-none" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M8 5h2v14H8zM14 5h2v14h-2z"></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div :class="{ 'block': activeTab === 'code', 'hidden': activeTab !== 'code' }" class="bg-gray-800 hidden">
+      <ul class="flex sm:hidden px-4 border-b border-gray-700 space-x-2">
+                  <li class="py-1 border-b -mb-px border-transparent" :class="activeSnippet === 'html' ? 'border-teal-400' : 'border-transparent'">
+            <button type="button" class="text-sm font-medium p-2 text-gray-400" :class="activeSnippet === 'html' ? 'text-teal-400' : 'text-gray-400'" @click="activeSnippet = 'html'">HTML</button>
+          </li>
+                  <li class="py-1 border-b -mb-px border-teal-400" :class="activeSnippet === 'react' ? 'border-teal-400' : 'border-transparent'">
+            <button type="button" class="text-sm font-medium p-2 text-teal-400" :class="activeSnippet === 'react' ? 'text-teal-400' : 'text-gray-400'" @click="activeSnippet = 'react'">React</button>
+          </li>
+                  <li class="py-1 border-b -mb-px border-transparent" :class="activeSnippet === 'vue' ? 'border-teal-400' : 'border-transparent'">
+            <button type="button" class="text-sm font-medium p-2 text-gray-400" :class="activeSnippet === 'vue' ? 'text-teal-400' : 'text-gray-400'" @click="activeSnippet = 'vue'">Vue</button>
+          </li>
+              </ul>
+            <pre @copy="onCopy($event)" :class="{'block': activeSnippet === 'html', 'hidden': activeSnippet !== 'html' }" class="language-html scrollbar-none m-0 p-0 overflow-auto text-white text-sm leading-normal hidden"><code class="inline-block p-4 scrolling-touch subpixel-antialiased" x-ref="codeBlockhtml"></code></pre>
+            <pre @copy="onCopy($event)" :class="{'block': activeSnippet === 'react', 'hidden': activeSnippet !== 'react' }" class="language-jsx block scrollbar-none m-0 p-0 overflow-auto text-white text-sm leading-normal"><code class="inline-block p-4 scrolling-touch subpixel-antialiased" x-ref="codeBlockreact" data-highlighted="true"><span class="token comment">/* This example requires Tailwind CSS v2.0+ */</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">Example</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">className</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>bg-white<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">className</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">className</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text-center<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+          </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span> <span class="token attr-name">className</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text-base font-semibold text-indigo-600 tracking-wide uppercase<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">Pricing</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h2</span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+          </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">className</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>mt-1 text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+            Take control of your team.
+          </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+          </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">className</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>max-w-xl mt-5 mx-auto text-xl text-gray-500<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+            Start building for free, then add a site plan to go live. Account plans unlock additional features.
+          </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+            <pre @copy="onCopy($event)" :class="{'block': activeSnippet === 'vue', 'hidden': activeSnippet !== 'vue' }" class="language-html scrollbar-none m-0 p-0 overflow-auto text-white text-sm leading-normal hidden"><code class="inline-block p-4 scrolling-touch subpixel-antialiased" x-ref="codeBlockvue"></code></pre>
+          </div>
+  </div>

@@ -2,12 +2,11 @@ import React, { useState  }  from "react"
 import { Link } from 'react-router-dom'
 
 import { Input, DndList } from '@availabs/avl-components'
-import { DmsButton } from "components/dms/components/dms-button"
+import { DmsButton } from 'modules/dms/components/dms-button'
 
 import Layout from './Layout'
 
-
-import get from "lodash.get"
+import get from 'lodash.get'
 
 
 

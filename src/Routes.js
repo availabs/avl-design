@@ -2,9 +2,9 @@
 // --- Public Pages ------
 import MethodsEdit from 'pages/Methods'
 import Methods from 'pages/Methods/view'
+import CompDoc from 'pages/ComponentDocument'
 
 import AdminHome from 'pages/Home'
-import FemaDisaster from 'pages/Home/disaster'
 
 import Auth from "pages/Auth"
 import NoMatch from 'pages/404';
@@ -12,7 +12,7 @@ import NoMatch from 'pages/404';
 export default [
 	// -- Public -- //
 	...Methods,
-	FemaDisaster,
+	CompDoc,
 	// -- Authed -- //
 	MethodsEdit,
 	AdminHome,

@@ -2,7 +2,7 @@ import React from "react"
 import get from 'lodash.get'
 
 import {/*TopNav,*/ withAuth} from '@availabs/avl-components'
-import {SideNav} from 'components/avl-components/src'
+import {SideNav} from 'modules/avl-components/src'
 import { Link } from 'react-router-dom'
 
 import AuthMenu from 'pages/Auth/AuthMenu'
@@ -56,14 +56,14 @@ const View = withAuth(({item, dataItems, user, ...props}) => {
     return (
         <Layout>
             <div className={`w-full h-full flex-1`}>
-                <div className={'h-full flex justify-center flex-col lg:flex-row h-screen'}>
+                <div className={'h-full flex justify-center flex-col lg:flex-row'}>
                     <div className='h-full hidden xl:block w-64'>
                         <SideNav
                             menuItems={navItems}
                             rightMenu={<AuthMenu />}
                             customTheme={{
                             sidebarW: '64',
-                            sidebarBg: 'bg-gray-100 border-r border-gray-300 h-full fixed',
+                            sidebarBg: 'bg-gray-100 border-r border-gray-300 h-full',
                             navitemSide: ' pl-4 hover:bg-gray-200 w-full py-2 text-base font-medium text-gray-600 inline-flex items-center border-b border-r border-gray-200  hover:pb-4 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out',
                             navitemSideActive: 'pl-4 py-2 inline-flex w-full items-center bg-white border border-gray-200 text-base font-medium text-blue-500 hover:pb-4 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out'
                         }} />
