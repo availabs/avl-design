@@ -1,38 +1,35 @@
-import React  from "react"
-import {/*useTheme,*/ TopNav} from '@availabs/avl-components'
+import React from "react";
+import { /*useTheme,*/ TopNav } from "modules/avl-components/src/";
+import { Link } from "react-router-dom";
 // import AuthMenu from 'pages/Auth/AuthMenu'
 
-const Layout = ({children}) => {
+const Layout = ({ children }) => {
 	// const theme = useTheme()
 	return (
-	  	<div className={`flex items-start flex-col min-h-screen`}>
-            <div className='w-full fixed bg-white z-10'>
-		  		<TopNav
-		  			logo={<div className='text-gray-200 px-4 text-sm font-medium'>AVAIL Design</div>}
-		  			menuItems={[
-		    			{
-			                name: 'Components',
-			                path: `/methods`,
-			                //icon: 'fa fa-edit',
-			                className: 'font-medium text-lg z-50'
-			            },
-			            {
-			                name: 'Dev',
-			                path: `/comdocdev`,
-			                //icon: 'fa fa-edit',
-			                className: 'font-medium text-lg z-50'
-			            },
-		    		]}
-		    	/>
-		    </div>
-            <div className={`w-full h-full flex-1 mt-12 bg-gray-100`}>
-	    		{children}
-	    	</div>
+		<div className={`flex items-start flex-col min-h-screen`}>
+			<div className="w-full fixed bg-white z-10">
+				<TopNav
+					LeftNav={() => (
+						<Link to="/" className="flex items-center justify-center h-12">
+							<span className="text-lg font-medium uppercase px-4">
+								AVL Design
+							</span>
+						</Link>
+					)}
+					menuItems={[
+						{
+							name: "Components",
+							path: `/components`,
+							icon: "os-icon os-icon-home-10",
+						},
+					]}
+				/>
+			</div>
+			<div className={`w-full h-full flex-1 mt-12 bg-gray-100`}>{children}</div>
 		</div>
-	)
-}
+	);
+};
 
-export default Layout
+export default Layout;
 
 //{/*rightMenu={<div className='border-b border-gray-200 pb-3'><AuthMenu /></div>}*/}
-		    		

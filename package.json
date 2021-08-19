@@ -4,10 +4,10 @@
   "private": true,
   "dependencies": {
     "@availabs/ams": "^1.0.9",
-    "@availabs/avl-components": "^1.0.66",
+    "@availabs/avl-components": "^1.0.76",
     "@draft-js-plugins/editor": "^4.1.0",
-    "@testing-library/jest-dom": "^5.11.10",
-    "@testing-library/react": "^11.2.6",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "d3-format": "^2.0.0",
     "d3-time-format": "^3.0.0",
@@ -18,26 +18,26 @@
     "lodash": "^4.17.21",
     "lodash.clonedeep": "^4.5.0",
     "lodash.get": "^4.4.2",
-    "npm": "^7.20.5",
+    "npm": "^7.21.0",
     "re-resizable": "^6.9.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-frame-component": "^5.1.0",
-    "react-redux": "^7.2.3",
+    "react-redux": "^7.2.4",
     "react-resizable": "^3.0.4",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.0",
-    "redux": "^4.0.5",
+    "redux": "^4.1.1",
     "redux-thunk": "^2.3.0",
-    "styled-components": "^5.2.3",
-    "tlds": "^1.219.0",
+    "styled-components": "^5.3.0",
+    "tlds": "^1.221.1",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
     "analyze": "source-map-explorer 'build/static/js/*.js'",
     "start": "npm run build:styles && react-scripts start",
     "build": "react-scripts build",
-    "build:styles": "tailwind build src/styles/index.css -o src/styles/tailwind.css",
+    "build:styles": "TAILWIND_MODE=watch tailwind build src/styles/index.css -o src/styles/tailwind.css",
     "deploy": "react-scripts build && aws s3 sync build/ s3://shmp",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -64,12 +64,13 @@
     ]
   },
   "devDependencies": {
-    "autoprefixer": "^10.2.5",
+    "autoprefixer": "^10.3.1",
     "bluebird": "^3.7.2",
     "node-fetch": "^2.6.1",
-    "pg": "^8.6.0",
-    "postcss": "^8.2.9",
+    "pg": "^8.7.1",
+    "postcss": "^8.3.6",
+    "prettier": "2.3.2",
     "sql": "^0.78.0",
-    "tailwindcss": "^2.1.1"
+    "tailwindcss": "^2.2.7"
   }
 }
