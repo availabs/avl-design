@@ -26,11 +26,12 @@ const CompDoc = () => {
   const theme = useTheme();
   let { component } = useParams();
   const [Doc, setDoc] = useState(compLib[component].doc);
+  const [example, setExample] = useState(0);
 
   //console.log("testing", Doc);
 
   const [compProps, setCompProps] = useState(
-    get(Doc, "props", []).reduce((compProps, prop) => {
+    get(Doc, `examples[${example}].props`, []).reduce((compProps, prop) => {
       compProps[prop.name] = prop.default;
       return compProps;
     }, {})
@@ -41,17 +42,22 @@ const CompDoc = () => {
   }, [component]);
 
   const [themeVars, setThemeVars] = useState({
-    ...get(Doc, "theme", []).reduce((themeVars, tvar) => {
+    ...get(Doc, `examples[${example}].theme`, []).reduce((themeVars, tvar) => {
       themeVars[tvar] = theme[tvar];
       return themeVars;
     }, {}),
-    ...get(Doc, "dependencies", []).reduce((themeVars, dep) => {
-      dep.theme.forEach((tvar) => {
-        themeVars[tvar] = theme[tvar];
-      });
-      return themeVars;
-    }, {}),
+    ...get(Doc, `examples[${example}].dependencies`, []).reduce(
+      (themeVars, dep) => {
+        dep.theme.forEach((tvar) => {
+          themeVars[tvar] = theme[tvar];
+        });
+        return themeVars;
+      },
+      {}
+    ),
   });
+
+  const DocComp = get(Doc, `examples[${example}].Component`, () => <span />);
 
   return (
     <Layout>
@@ -75,7 +81,7 @@ const CompDoc = () => {
         {/* Component Container */}
         <div className="flex-1 max-w-7xl pt-4">
           <ResizableFrame className={"fixed"}>
-            {Doc.Component ? <Doc.Component {...compProps} /> : <span />}
+            <DocComp {...compProps} />
           </ResizableFrame>
         </div>
       </div>
