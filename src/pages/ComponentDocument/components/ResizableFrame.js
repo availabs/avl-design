@@ -25,7 +25,7 @@ const ResizableFrame = ({ children }, props) => {
       <div
         ref={frameRef}
         className=" ring-opacity-5 h-full  w-full"
-        style={{ height: 900 }}
+        style={{ height: 860 }}
       >
         <div className="h-full fixed">
           <Resizable
@@ -58,7 +58,7 @@ const ResizableFrame = ({ children }, props) => {
               ),
             }}
           >
-            <div className="bg-white h-full border">
+            <div className="bg-white h-full border mr-3">
               <Frame
                 style={{
                   width: "100%",

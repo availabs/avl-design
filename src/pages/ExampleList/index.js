@@ -1,10 +1,12 @@
 import React from "react";
+// import {useFalcor} from '@availabs/avl-components'
 import { Link } from "react-router-dom";
 import Layout from "pages/Layout";
+// import get from 'lodash.get'
 
-import components from "components";
+import examples from "./examples";
 
-const config = components.reduce((output, comp) => {
+const config = examples.reduce((output, comp) => {
   if (!output[comp.section]) {
     output[comp.section] = {};
   }
@@ -16,10 +18,10 @@ const Home = ({ ...props }) => {
   return (
     <Layout>
       <div className="w-full max-w-7xl mx-auto">
-        <div className="pt-4 pb-3 px-6">
-          <h3 className="inline font-bold text-3xl">Components</h3>
+        <div className="pt-4 pb-3">
+          <h3 className="inline font-bold text-3xl">Examples</h3>
         </div>
-        <div className="px-4 md:px-0">
+        <div>
           {Object.keys(config).map((section, i) => (
             <div
               key={i}
@@ -32,7 +34,7 @@ const Home = ({ ...props }) => {
                 {Object.keys(config[section]).map((comp, j) => (
                   <Link
                     key={j}
-                    to={`/components/${comp}`}
+                    to={`/examples/${comp}`}
                     className="group relative bg-white rounded-lg shadow-sm overflow-hidden ring-1 ring-black ring-opacity-5"
                   >
                     <figure>
@@ -63,7 +65,7 @@ const Home = ({ ...props }) => {
 };
 
 export default {
-  path: "/components/",
+  path: "/examples/",
   exact: true,
   auth: false,
   component: Home,

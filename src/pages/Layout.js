@@ -9,18 +9,23 @@ const Layout = ({ children }) => {
 		<div className={`flex items-start flex-col min-h-screen`}>
 			<div className="w-full fixed bg-white z-10">
 				<TopNav
-					LeftNav={() => (
+					leftMenu={
 						<Link to="/" className="flex items-center justify-center h-12">
 							<span className="text-lg font-medium uppercase px-4">
 								AVL Design
 							</span>
 						</Link>
-					)}
+					}
 					menuItems={[
 						{
 							name: "Components",
 							path: `/components`,
 							icon: "os-icon os-icon-home-10",
+						},
+						{
+							name: "Examples",
+							path: `/examples`,
+							icon: "os-icon os-icon-grid-squares2",
 						},
 					]}
 				/>

@@ -1,5 +1,8 @@
 import React, { Component } from "react";
-import Theme from "Theme";
+import { Themes } from "modules/avl-components/src";
+import get from "lodash.get";
+
+let Theme = get(Themes, "AVL_THEME", Themes["light"]);
 class JIT extends Component {
   render() {
     console.log();

@@ -4,7 +4,6 @@
   "private": true,
   "dependencies": {
     "@availabs/ams": "^1.0.9",
-    "@availabs/avl-components": "^1.0.76",
     "@draft-js-plugins/editor": "^4.1.0",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",

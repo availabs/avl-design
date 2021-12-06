@@ -3,6 +3,7 @@ import MethodsEdit from "pages/Methods";
 import Methods from "pages/Methods/view";
 import CompDoc from "pages/ComponentDocument";
 import CompList from "pages/ComponentList";
+import ExamplList from "pages/ExampleList";
 
 import AdminHome from "pages/Home";
 
@@ -13,8 +14,9 @@ import JIT from "pages/JIT";
 export default [
 	// -- Public -- //
 	...Methods,
-	CompDoc,
+	...CompDoc,
 	CompList,
+	ExamplList,
 	JIT,
 
 	// -- Authed -- //

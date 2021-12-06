@@ -8,7 +8,7 @@ import { AUTH_HOST, PROJECT_NAME, CLIENT_HOST } from "config";
 import { Provider } from "react-redux";
 import store from "store";
 import {
-  //Themes,
+  Themes,
   ThemeContext,
   FalcorProvider,
   falcorGraph,
@@ -17,6 +17,7 @@ import {
 } from "modules/avl-components/src";
 
 import reportWebVitals from "./reportWebVitals";
+import get from "lodash.get";
 
 import DmsComponents from "modules/dms";
 import DmsWrappers from "modules/dms/wrappers";
@@ -30,9 +31,8 @@ import {
 import "styles/tailwind.css";
 import "styles/index.css";
 import "styles/fonts/os-icons.css";
-import Theme from "Theme";
 
-console.log("theme", Theme);
+// console.log("theme", Theme);
 
 addComponents(DmsComponents);
 addWrappers(DmsWrappers);
@@ -50,7 +50,9 @@ ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <FalcorProvider falcor={falcorGraph(API_HOST)}>
-        <ThemeContext.Provider value={Theme}>
+        <ThemeContext.Provider
+          value={get(Themes, "AVL_THEME", Themes["light"])}
+        >
           <AuthEnabledApp />
         </ThemeContext.Provider>
       </FalcorProvider>
