@@ -77,6 +77,11 @@ const ResizableFrame = ({ children }, props) => {
                       href="/css/frame.css"
                     />
                     <link
+                        type="text/css"
+                        rel="stylesheet"
+                        href="/css/highlight.css"
+                    />
+                    <link
                       type="text/css"
                       rel="stylesheet"
                       href="/css/os-icons.css"

@@ -3,15 +3,20 @@ import { useParams } from "react-router-dom";
 import Layout from "pages/Layout";
 import get from "lodash.get";
 
-//
 import PropsManager from "./components/PropsManager";
 import ThemeManager from "./components/ThemeManager";
 import ResizableFrame from "./components/ResizableFrame";
-// import get from 'lodash.get'
+import {RenderTabs} from "./components/Tabs";
 
 import { useTheme } from "modules/avl-components/src/";
 import components from "components";
 import examples from "pages/ExampleList/examples";
+
+// code highlighter
+import Lowlight from 'react-lowlight'
+import javascript from 'highlight.js/lib/languages/javascript'
+// import './components/hljs.css';
+Lowlight.registerLanguage('js', javascript)
 
 let compLib = components.reduce((lib, comp) => {
   lib[comp.name] = comp;
@@ -27,8 +32,7 @@ const CompDoc = () => {
   let { component } = useParams();
   const [Doc, setDoc] = useState(compLib[component].doc);
   const [example, setExample] = useState(0);
-
-  //console.log("testing", Doc);
+  const [view, setView] = useState('Code');
 
   const [compProps, setCompProps] = useState(
     get(Doc, `examples[${example}].props`, []).reduce((compProps, prop) => {
@@ -58,6 +62,7 @@ const CompDoc = () => {
   });
 
   const DocComp = get(Doc, `examples[${example}].Component`, () => <span />);
+  const codeComp = get(Doc, `examples[${example}].code`, () => <span />);
 
   return (
     <Layout>
@@ -71,7 +76,7 @@ const CompDoc = () => {
             </div>
           </div>
           <PropsManager
-            propsList={get(Doc, "props", [])}
+            propsList={get(Doc, `examples[${example}].props`, [])}
             compProps={compProps}
             editProps={setCompProps}
           />
@@ -81,7 +86,10 @@ const CompDoc = () => {
         {/* Component Container */}
         <div className="flex-1 max-w-7xl pt-4">
           <ResizableFrame className={"fixed"}>
-            <DocComp {...compProps} />
+            {RenderTabs(view, setView)}
+            {
+              view === 'Preview' ? <DocComp {...compProps} /> : <Lowlight language="js" value={codeComp} />
+            }
           </ResizableFrame>
         </div>
       </div>
