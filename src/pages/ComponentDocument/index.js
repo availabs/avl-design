@@ -8,14 +8,13 @@ import ThemeManager from "./components/ThemeManager";
 import ResizableFrame from "./components/ResizableFrame";
 import {RenderTabs} from "./components/Tabs";
 
-import { useTheme } from "modules/avl-components/src/";
+import { useTheme, Select } from "modules/avl-components/src/";
 import components from "components";
 import examples from "pages/ExampleList/examples";
 
 // code highlighter
 import Lowlight from 'react-lowlight'
 import javascript from 'highlight.js/lib/languages/javascript'
-// import './components/hljs.css';
 Lowlight.registerLanguage('js', javascript)
 
 let compLib = components.reduce((lib, comp) => {
@@ -32,7 +31,7 @@ const CompDoc = () => {
   let { component } = useParams();
   const [Doc, setDoc] = useState(compLib[component].doc);
   const [example, setExample] = useState(0);
-  const [view, setView] = useState('Code');
+  const [view, setView] = useState('Preview');
 
   const [compProps, setCompProps] = useState(
     get(Doc, `examples[${example}].props`, []).reduce((compProps, prop) => {
@@ -64,6 +63,7 @@ const CompDoc = () => {
   const DocComp = get(Doc, `examples[${example}].Component`, () => <span />);
   const codeComp = get(Doc, `examples[${example}].code`, () => <span />);
 
+  console.log('??', compLib )
   return (
     <Layout>
       <div className="flex min-h-screen justify-center">
@@ -73,6 +73,22 @@ const CompDoc = () => {
             <div className="text-4xl font-bold">{Doc.name}</div>
             <div className="text-xl font-medium text-gray-600">
               {Doc.description}
+            </div>
+            <div className="text-xl font-medium text-gray-600 flex items-center">
+              <label>Example: </label>
+              <Select
+                  domain={get(Doc, `examples`, []).map(e => e.title)}
+                  value={get(Doc, `examples[${example}].title`, [])}
+                  onChange={e => {
+                    let newExample = get(Doc, `examples`, []).findIndex(ex => ex.title === e)
+                    setExample(newExample)
+
+                    setCompProps(get(Doc, `examples[${newExample}].props`, []).reduce((compProps, prop) => {
+                      compProps[prop.name] = prop.default;
+                      return compProps;
+                    }, {}))
+                  }}
+              />
             </div>
           </div>
           <PropsManager
