@@ -15,6 +15,7 @@ import examples from "pages/ExampleList/examples";
 // code highlighter
 import Lowlight from 'react-lowlight'
 import javascript from 'highlight.js/lib/languages/javascript'
+import {AVL_THEME_dynamic} from "../../modules/avl-components/src/Themes";
 Lowlight.registerLanguage('js', javascript)
 
 let compLib = components.reduce((lib, comp) => {
@@ -32,6 +33,8 @@ const CompDoc = () => {
   const [Doc, setDoc] = useState(compLib[component].doc);
   const [example, setExample] = useState(0);
   const [view, setView] = useState('Preview');
+  const [color, setColor] = useState('white');
+  const [size, setSize] = useState('compact');
 
   const [compProps, setCompProps] = useState(
     get(Doc, `examples[${example}].props`, []).reduce((compProps, prop) => {
@@ -63,7 +66,6 @@ const CompDoc = () => {
   const DocComp = get(Doc, `examples[${example}].Component`, () => <span />);
   const codeComp = get(Doc, `examples[${example}].code`, () => <span />);
 
-  console.log('??', compLib )
   return (
     <Layout>
       <div className="flex min-h-screen justify-center">
@@ -90,6 +92,19 @@ const CompDoc = () => {
                   }}
               />
             </div>
+            <div className="text-xl font-medium text-gray-600 flex items-center">
+              <label>Theme: </label>
+              <Select
+                  domain={['transparent', 'white', 'dark', 'gray', 'bright']}
+                  value={color}
+                  onChange={e => setColor(e)}
+              />
+              <Select
+                  domain={['compact', 'full', 'mini', 'micro']}
+                  value={size}
+                  onChange={e => setSize(e)}
+              />
+            </div>
           </div>
           <PropsManager
             propsList={get(Doc, `examples[${example}].props`, [])}
@@ -104,7 +119,7 @@ const CompDoc = () => {
           <ResizableFrame className={"fixed"}>
             {RenderTabs(view, setView)}
             {
-              view === 'Preview' ? <DocComp {...compProps} /> : <Lowlight language="js" value={codeComp} />
+              view === 'Preview' ? <DocComp {...compProps} theme={AVL_THEME_dynamic(color, size)}/> : <Lowlight language="js" value={codeComp} />
             }
           </ResizableFrame>
         </div>
