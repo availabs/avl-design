@@ -116,8 +116,8 @@ const CompDoc = () => {
 
         {/* Component Container */}
         <div className="flex-1 max-w-7xl pt-4">
+          {RenderTabs(view, setView)}
           <ResizableFrame className={"fixed"}>
-            {RenderTabs(view, setView)}
             {
               view === 'Preview' ? <DocComp {...compProps} theme={AVL_THEME_dynamic(color, size)}/> : <Lowlight language="js" value={codeComp} />
             }
