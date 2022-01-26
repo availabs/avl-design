@@ -28,7 +28,8 @@ import {
   enableAuth,
 } from "@availabs/ams";
 
-import "styles/tailwind.css";
+// import "styles/tailwind.css";
+import './index.css';
 import "styles/index.css";
 import "styles/fonts/os-icons.css";
 

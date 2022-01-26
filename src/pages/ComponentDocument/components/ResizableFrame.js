@@ -1,13 +1,25 @@
 import React, { useState, useRef, useEffect } from "react";
 import Frame from "react-frame-component";
 import { Resizable } from "re-resizable";
+// import get from 'lodash.get'
 
-const ResizableFrame = ({ children }, props) => {
+const ResizableFrame = ({ children, fixedSize }, props) => {
   const frameRef = useRef(null);
-  const [frameSize, setFrameSize] = useState({ height: 0, width: 0 });
-  const [initWidth, setInitWidth] = useState(0);
+  
+  const [frameSize, setFrameSize] = useState({ height: 0, width: props.fixedSize });
+  const [initWidth, setInitWidth] = useState(props.fixedSize);
+  
 
   useEffect(() => {
+    setInitWidth( frameRef.current.offsetWidth)
+    setFrameSize({
+        height: frameRef.current.offsetHeight,
+        width: frameRef.current.offsetWidth,
+      });
+  },[fixedSize])
+
+  useEffect(() => {
+
     const handleResize = () => {
       if (!frameRef || !frameRef.current) return;
       setFrameSize({
@@ -18,16 +30,17 @@ const ResizableFrame = ({ children }, props) => {
     };
     handleResize();
     window.addEventListener("resize", handleResize);
-  }, [frameRef]);
-
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+  
   return (
-    <div className="mx-4">
+    <div className="mx-4 h-full">
       <div
         ref={frameRef}
-        className=" ring-opacity-5 h-full  w-full"
-        style={{ height: 860 }}
+        className=" ring-opacity-5 h-[calc(100%_-_5rem)] w-full"
+       
       >
-        <div className="h-full fixed">
+        <div className="h-full">
           <Resizable
             className="h-full shadow-lg "
             size={{ width: frameSize.width, height: frameSize.height }}

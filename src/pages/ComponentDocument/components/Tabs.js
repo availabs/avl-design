@@ -1,56 +1,33 @@
 import React from "react";
 
-function classNames(...classes) {
-    return classes.filter(Boolean).join(' ')
-}
-
 export const RenderTabs = (view, setView) => {
-    const tabs = [{name: 'Preview', href: '#', current: view === 'Preview'},
-        {name: 'Code', href: '#', current: view === 'Code'}
+    const tabs = [
+        {name: 'Preview', href: '#', current: view === 'Preview', icon: 'fad fa-eye'},
+        // {name: 'Props', href: '#', current: view === 'Props', icon: 'fad fa-brackets-curly'}, 
+        {name: 'Source', href: '#', current: view === 'Source', icon: 'fad fa-code'},
+        // {name: 'Component', href: '#', current: view === 'Component', icon: 'fad fa-code-branch'}     
     ];
-
+    
     return (
-        <div>
-            <div className="sm:hidden">
-                <label htmlFor="tabs" className="sr-only">
-                    Select a tab
-                </label>
-                <select
-                    id="tabs"
-                    name="tabs"
-                    className="block w-full focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md"
-                    defaultValue={(tabs.find((tab) => tab.current) || {}).name}
-                    onChange={e => setView(e.target.value)}
-                >
+        
+        <div className="h-12 mb-4">
+            <div className="-mb-px h-full flex items-center px-4">
+                <div className='group p-0.5 rounded-lg flex bg-gray-100 hover:bg-gray-200'>
                     {tabs.map((tab) => (
-                        <option key={tab.name}>{tab.name}</option>
+                        <button
+                            key={tab.name}
+                            href={tab.href}
+                            aria-current={tab.current ? 'page' : undefined}
+                            onClick={e => setView(tab.name)}
+                        >
+                            <span className={`p-1.5 lg:pl-2.5 lg:pr-3.5 rounded-md flex items-center text-sm text-gray-700 ${tab.current ? 'bg-white shadow-sm ring-1 ring-black ring-opacity-5' : ''}` }>
+                                <span className={`px-1 ${tab.icon} ${tab.current ? 'text-blue-500' : ''}`}/><span>{tab.name}</span>
+                            </span>
+                        </button>
                     ))}
-                </select>
-            </div>
-
-
-            <div className="hidden sm:block">
-                <div className="border-b border-gray-200">
-                    <div className="-mb-px flex justify-end px-3">
-                        {tabs.map((tab) => (
-                            <button
-                                key={tab.name}
-                                href={tab.href}
-                                className={classNames(
-                                    tab.current
-                                        ? 'border-indigo-500 text-indigo-600'
-                                        : 'border-gray-200 text-gray-500 hover:text-gray-700 hover:border-gray-300',
-                                    'w-20 py-4 px-1 text-center border-2 font-medium text-sm'
-                                )}
-                                aria-current={tab.current ? 'page' : undefined}
-                                onClick={e => setView(tab.name)}
-                            >
-                                {tab.name}
-                            </button>
-                        ))}
-                    </div>
                 </div>
             </div>
         </div>
+       
     )
 }
