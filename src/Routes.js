@@ -9,7 +9,7 @@ import AdminHome from "pages/Home";
 
 import Auth from "pages/Auth";
 import NoMatch from "pages/404";
-import JIT from "pages/JIT";
+
 
 export default [
 	// -- Public -- //
@@ -17,7 +17,6 @@ export default [
 	...CompDoc,
 	CompList,
 	ExamplList,
-	JIT,
 
 	// -- Authed -- //
 	MethodsEdit,

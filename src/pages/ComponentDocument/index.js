@@ -31,8 +31,8 @@ examples.forEach((comp, i) => {
 });
 
 const CompDoc = () => {
-  const theme = useTheme();
-  let { component } = useParams();
+  const theme = useTheme(); // theme provider
+  let { component } = useParams(); //react router params
   const [Doc, setDoc] = useState(compLib[component].doc);
   const [example, setExample] = useState(0);
   const [view, setView] = useState('Preview');
@@ -62,21 +62,15 @@ const CompDoc = () => {
     setDoc(compLib[component].doc);
   }, [component]);
 
-  const [themeVars, setThemeVars] = useState({
-    ...get(Doc, `examples[${example}].theme`, []).reduce((themeVars, tvar) => {
-      themeVars[tvar] = theme[tvar];
-      return themeVars;
-    }, {}),
-    ...get(Doc, `examples[${example}].dependencies`, []).reduce(
-      (themeVars, dep) => {
-        dep.theme.forEach((tvar) => {
-          themeVars[tvar] = theme[tvar];
-        });
-        return themeVars;
-      },
-      {}
-    ),
-  });
+  const themeVars = get(get(theme,get(Doc, 'themeVar', ''), () => ({}))({}),'vars',{})
+
+
+  const [themeOptions, setThemeOptions] = useState(
+    Object.keys(themeVars).reduce((out, themeVar) => {
+        out[themeVar] = Object.keys(themeVars[themeVar])[0];
+        return out;
+    }, {})
+  );
 
   const DocComp = get(Doc, `examples[${example}].Component`, <span />);
   const codeComp = get(Doc, `examples[${example}].code`, <span />);
@@ -118,7 +112,30 @@ const CompDoc = () => {
               editProps={setCompProps}
             />
           </div>
-          <ThemeManager themeVars={themeVars} editTheme={setThemeVars} />
+          <div>
+            <div className='px-8 py-4 bg-white'>
+              <div className="text-2xl font-bold">Theme Props</div>
+              <div className='flex'>
+                {Object.keys(themeVars).map(themeVar => 
+                  <div className="flex-1 text-xl font-medium text-gray-600 flex items-center py-4">
+                    <label>{themeVar}: </label>
+                    <Select
+                        domain={Object.keys(get(themeVars, themeVar, {}))}
+                        value={get(themeOptions, themeVar , '')}
+                        onChange={e => {
+                          setThemeOptions({
+                            ...themeOptions,
+                            [themeVar] : e
+                          })
+                        }}
+                    />
+                  </div>
+                )}
+              </div>
+            </div>
+            {JSON.stringify(themeOptions)}
+            <ThemeManager themeOptions={themeOptions} editTheme={setThemeOptions} />
+            </div>
         </div>
 
         {/* Component Container */}
@@ -128,7 +145,7 @@ const CompDoc = () => {
             <ResizableFrame fixedSize={fixedSize}>
             {
               view === 'Preview' 
-                ? <DocComp {...compProps}/> 
+                ? <DocComp {...compProps} themeOptions={themeOptions} /> 
                 : <Lowlight language="js" className='p-4' value={reactElementToJSXString(
                     <div className="h-full w-full bg-gray-100">
                       <DocComp {...compProps} />

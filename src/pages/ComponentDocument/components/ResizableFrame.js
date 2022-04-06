@@ -87,6 +87,11 @@ const ResizableFrame = ({ children, fixedSize }, props) => {
                     <link
                       type="text/css"
                       rel="stylesheet"
+                      href="/css/twbuild.css"
+                    />
+                    <link
+                      type="text/css"
+                      rel="stylesheet"
                       href="/css/frame.css"
                     />
                     <link
@@ -98,6 +103,11 @@ const ResizableFrame = ({ children, fixedSize }, props) => {
                       type="text/css"
                       rel="stylesheet"
                       href="/css/os-icons.css"
+                    />
+                    <link
+                      type="text/css"
+                      rel="stylesheet"
+                      href="/css/font-awesome/css/all.min.css"
                     />
                   </>
                 }

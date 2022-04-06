@@ -1,15 +1,16 @@
-import { TopNav } from "modules/avl-components/src";
+import { TopNav, SideNav } from "modules/avl-components/src";
 //import { useTheme } from "../../wrappers";
 
 export default {
-	name: "Basic Example",
-	description: "For figuring out theme inheritance.",
+	name: "ppdaf design",
+	description: "Design system for NYSDOT data platform",
 	examples: [{
 		title: "Basic Example",
 		Component: (props) => {
 			return (
 				<div className="h-full w-full bg-gray-100">
 					<TopNav {...props} />
+					<SideNav />
 					<div className="max-w-5xl mx-auto bg-white my-4 p-4">Some Content</div>
 				</div>
 			);
@@ -18,37 +19,16 @@ export default {
 			name: "menuItems",
 			type: "data",
 			default: [
+				
 				{
-					name: "Dashboard",
-					icon: "os-icon os-icon-layout",
-				},
-
-				{
-					name: "Applications",
-					icon: "os-icon os-icon-package",
-					active: true,
-				},
-				{
-					name: "Pages",
-					icon: "os-icon os-icon-file-text",
-				},
-
-				{
-					name: "Emails",
-					icon: "os-icon os-icon-mail",
-				},
-				{
-					name: "Users",
+					name: "Documentation",
 					icon: "os-icon os-icon-users",
 				},
 				{
-					name: "Forms",
+					name: "Data Download",
 					icon: "os-icon os-icon-edit-32",
 				},
-				{
-					name: "Tables",
-					icon: "os-icon os-icon-grid",
-				},
+				
 			],
 			},
 			{

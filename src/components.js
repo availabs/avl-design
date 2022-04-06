@@ -15,7 +15,7 @@ const components = [
   },
   {
     name: "Select",
-    doc: require("modules/avl-components/src/components/Inputs/select.docs.js")
+    doc: require("modules/avl-components/src/components/Inputs/Select.docs.js")
       .default,
     img: "/images/components/select-menus.png",
     section: "Inputs",

@@ -8,7 +8,7 @@ import Routes from 'Routes';
 import {
   DefaultLayout,
   Messages
-} from "@availabs/avl-components"
+} from "modules/avl-components/src"
 
 class App extends React.Component {
   render() {
