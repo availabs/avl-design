@@ -27,6 +27,13 @@ const components = [
     img: "/images/components/buttons.png",
     section: "Elements",
   },
+  {
+    name: "Table",
+    doc: require("modules/avl-components/src/components/Table/Table.docs.js")
+      .default,
+    img: "/images/components/table.png",
+    section: "Elements",
+  },
 ];
 
 export default components;
