@@ -15,7 +15,6 @@ import examples from "pages/ExampleList/examples";
 // code highlighter
 import Lowlight from 'react-lowlight'
 import javascript from 'highlight.js/lib/languages/javascript'
-import {AVL_THEME_dynamic} from "../../modules/avl-components/src/Themes";
 
 import reactElementToJSXString from 'react-element-to-jsx-string';
 
@@ -26,7 +25,7 @@ let compLib = components.reduce((lib, comp) => {
   return lib;
 }, {});
 
-examples.forEach((comp, i) => {
+examples.forEach((comp) => {
   compLib[comp.name] = comp;
 });
 
@@ -103,6 +102,10 @@ const CompDoc = () => {
                         return compProps;
                       }, {}))
                     }}
+                    className={`text-sm`}
+                    themeOptions={{
+                      size: 'compact'
+                    }}
                 />
               </div>
             </div>
@@ -115,7 +118,7 @@ const CompDoc = () => {
           <div>
             <div className='px-8 py-4 bg-white'>
               <div className="text-2xl font-bold">Theme Props</div>
-              <div className='flex'>
+              <div className='flex flex-wrap'>
                 {Object.keys(themeVars).map(themeVar => 
                   <div className="flex-1 text-xl font-medium text-gray-600 flex items-center py-4">
                     <label>{themeVar}: </label>
@@ -127,6 +130,10 @@ const CompDoc = () => {
                             ...themeOptions,
                             [themeVar] : e
                           })
+                        }}
+                        className={'text-sm'}
+                        themeOptions={{
+                          size: 'compact'
                         }}
                     />
                   </div>
