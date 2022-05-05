@@ -15,7 +15,6 @@ import examples from "pages/ExampleList/examples";
 // code highlighter
 import Lowlight from 'react-lowlight'
 import javascript from 'highlight.js/lib/languages/javascript'
-import {AVL_THEME_dynamic} from "../../modules/avl-components/src/Themes";
 
 import reactElementToJSXString from 'react-element-to-jsx-string';
 
@@ -26,7 +25,7 @@ let compLib = components.reduce((lib, comp) => {
   return lib;
 }, {});
 
-examples.forEach((comp, i) => {
+examples.forEach((comp) => {
   compLib[comp.name] = comp;
 });
 
@@ -98,7 +97,6 @@ const CompDoc = () => {
                       onChange={e => {
                         let newExample = get(Doc, `examples`, []).findIndex(ex => ex.title === e)
                         setExample(newExample)
-
                         setCompProps(get(Doc, `examples[${newExample}].props`, []).reduce((compProps, prop) => {
                           compProps[prop.name] = prop.default;
                           return compProps;
