@@ -31,7 +31,14 @@ const components = [
     name: "Table",
     doc: require("modules/avl-components/src/components/Table/Table.docs.js")
       .default,
-    img: "/images/components/table.png",
+    img: "/images/components/tables.png",
+    section: "Elements",
+  },
+  {
+    name: "TabPanel",
+    doc: require("modules/avl-components/src/components/TabPanel/TabPanel.docs.js")
+      .default,
+    img: "/images/components/tabs.png",
     section: "Elements",
   },
 ];

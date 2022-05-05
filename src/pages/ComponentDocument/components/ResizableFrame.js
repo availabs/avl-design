@@ -107,7 +107,7 @@ const ResizableFrame = ({ children, fixedSize }, props) => {
                     <link
                       type="text/css"
                       rel="stylesheet"
-                      href="/css/font-awesome/css/all.min.css"
+                      href="/css/font-awesome-6/css/all.min.css"
                     />
                   </>
                 }
