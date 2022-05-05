@@ -90,20 +90,22 @@ const CompDoc = () => {
             <div className='px-8 py-4 bg-white'>
               <div className="text-2xl font-bold">Component Props</div>
               <div className="text-xl font-medium text-gray-600 flex items-center py-4">
-                <label>Example: </label>
-                <Select
-                    domain={get(Doc, `examples`, []).map(e => e.title)}
-                    value={get(Doc, `examples[${example}].title`, [])}
-                    onChange={e => {
-                      let newExample = get(Doc, `examples`, []).findIndex(ex => ex.title === e)
-                      setExample(newExample)
+                 <div>
+                    <label className={'text-base block p-1 text-gray-400'}> Example: </label>
+                    <Select
+                      domain={get(Doc, `examples`, []).map(e => e.title)}
+                      value={get(Doc, `examples[${example}].title`, [])}
+                      onChange={e => {
+                        let newExample = get(Doc, `examples`, []).findIndex(ex => ex.title === e)
+                        setExample(newExample)
 
-                      setCompProps(get(Doc, `examples[${newExample}].props`, []).reduce((compProps, prop) => {
-                        compProps[prop.name] = prop.default;
-                        return compProps;
-                      }, {}))
-                    }}
-                />
+                        setCompProps(get(Doc, `examples[${newExample}].props`, []).reduce((compProps, prop) => {
+                          compProps[prop.name] = prop.default;
+                          return compProps;
+                        }, {}))
+                      }}
+                    />
+                  </div>
               </div>
             </div>
             <PropsManager
@@ -115,25 +117,26 @@ const CompDoc = () => {
           <div>
             <div className='px-8 py-4 bg-white'>
               <div className="text-2xl font-bold">Theme Props</div>
-              <div className='flex'>
+              <div className='flex flex-wrap'>
                 {Object.keys(themeVars).map(themeVar => 
                   <div className="flex-1 text-xl font-medium text-gray-600 flex items-center py-4">
-                    <label>{themeVar}: </label>
-                    <Select
-                        domain={Object.keys(get(themeVars, themeVar, {}))}
-                        value={get(themeOptions, themeVar , '')}
-                        onChange={e => {
-                          setThemeOptions({
-                            ...themeOptions,
-                            [themeVar] : e
-                          })
-                        }}
-                    />
+                    <div>
+                      <label className={'text-base block p-1 text-gray-400'}>{themeVar} </label>
+                      <Select
+                          domain={Object.keys(get(themeVars, themeVar, {}))}
+                          value={get(themeOptions, themeVar , '')}
+                          onChange={e => {
+                            setThemeOptions({
+                              ...themeOptions,
+                              [themeVar] : e
+                            })
+                          }}
+                      />
+                    </div>
                   </div>
                 )}
               </div>
             </div>
-            {JSON.stringify(themeOptions)}
             <ThemeManager themeOptions={themeOptions} editTheme={setThemeOptions} />
             </div>
         </div>
