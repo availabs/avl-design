@@ -28,6 +28,13 @@ const components = [
     section: "Elements",
   },
   {
+    name: "Input",
+    doc: require("modules/avl-components/src/components/Inputs/input.docs.js")
+      .default,
+    img: "/images/components/input.png",
+    section: "Inputs",
+  },
+  {
     name: "Table",
     doc: require("modules/avl-components/src/components/Table/Table.docs.js")
       .default,
